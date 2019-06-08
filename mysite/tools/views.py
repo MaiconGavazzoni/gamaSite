@@ -12,12 +12,12 @@ def hss(request):
     return render(request, template_name, context)
 
 def metalDuro(request):
-    broca = Item.objects.filter(type=2)
     tipo = TypeItem.objects.get(pk=2)
+    broca = Item.objects.filter(type_id=2).order_by('diameter',)
     template_name = 'tools/tabela.html'
     context = {
-        'broca': broca,
-        'tipo': tipo
+        'tipo': tipo,
+        'broca': broca
     }
     return render(request, template_name, context)
 
